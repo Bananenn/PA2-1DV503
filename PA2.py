@@ -23,7 +23,6 @@ def CreateTable(header, tableName):
     sqlQuerry = ("""
     CREATE TABLE %s (%s);
     """) % (tableName,colums)
-    print(sqlQuerry)
     myCursor.execute(sqlQuerry)
 
 def addTableContent(tableName, header, valuales):
@@ -33,12 +32,11 @@ def addTableContent(tableName, header, valuales):
     INSERT INTO %s (%s)
     VALUES (%s);
     """) % (tableName, header, valuales)
-    print(sqlQuerry)
     myCursor.execute(sqlQuerry)
     cnx.commit() # - This is needed for it to work, Only when inserting things tho
 
 # - For each file add table & fill it with the content from the files.   
-for file in ["carts", "competitions","customers"]:
+for file in ["carts", "races","participant","scoreboard"]:
     # - Open files and get relevant info
     with open(("%s.csv" % file), 'r') as read_obj:
         scv_reader = reader(read_obj)
