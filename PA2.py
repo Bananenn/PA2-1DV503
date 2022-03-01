@@ -8,6 +8,7 @@ myCursor = cnx.cursor()
 
 # Your code should check if the database with your last name exists
 # If the database does not exist, it should be created
+myCursor.execute("DROP DATABASE GoKart")
 myCursor.execute("CREATE DATABASE IF NOT EXISTS GoKart")
 myCursor.execute("USE GoKart")
 
@@ -22,6 +23,7 @@ def CreateTable(header, tableName):
     sqlQuerry = ("""
     CREATE TABLE %s (%s);
     """) % (tableName,colums)
+    print(sqlQuerry)
     myCursor.execute(sqlQuerry)
 
 def addTableContent(tableName, header, valuales):
@@ -36,9 +38,9 @@ def addTableContent(tableName, header, valuales):
     cnx.commit() # - This is needed for it to work, Only when inserting things tho
 
 # - For each file add table & fill it with the content from the files.   
-for file in ["planets", "species"]:
+for file in ["carts", "competitions","customers"]:
     # - Open files and get relevant info
-    with open(("data/%s.csv" % file), 'r') as read_obj:
+    with open(("%s.csv" % file), 'r') as read_obj:
         scv_reader = reader(read_obj)
         header = next(scv_reader)
         CreateTable(header, file)
@@ -48,4 +50,7 @@ for file in ["planets", "species"]:
                 addTableContent(file, header, next(scv_reader)) # next(scv_reader) will throw an excpetion
         except:
             print(" -- No more rowns --")
+
+
+# - temp
 
