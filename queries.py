@@ -1,6 +1,7 @@
 # You will need to use the Connector/Python
 from ast import match_case
 import queue
+from sqlite3 import Cursor
 from ssl import match_hostname
 import mysql.connector
 from csv import reader
@@ -35,12 +36,12 @@ def podiumPlacesForRace(mycursor):
     print("| {:20} | {:2} |".format(name, placing))
   print("—" * 29)
 
-<<<<<<< HEAD
 #Example for whoWonRace()
 # podiumPlacesForRace(myCursor, "Helmet Hair 2021")
 
-def whoHasParticipatedMostRaces(cursor):
-  cursor.execute("""SELECT
+def whoHasParticipatedMostRaces():
+  #TODO program things she has participated in 110 races counts 6 in both tables should only count in 1
+  myCursor.execute("""SELECT
   participant_id, participant.name,
   COUNT(participant_id) AS numberOfRaces 
 
@@ -55,13 +56,11 @@ def whoHasParticipatedMostRaces(cursor):
 
   LIMIT 1;""")
   
-  mostParticipation = cursor.fetchone()
+  mostParticipation = myCursor.fetchone()
   print("\n" + ("—") * 29)  
   print("%s has participated in the most races a total of %s" % (mostParticipation[1], mostParticipation[2]))#for (name, numberOfRaces) in cursor:
   print("—" * 29)
 
-whoHasParticipatedMostRaces(myCursor)
-=======
 def listRacesAndPick():
     myCursor.execute("SELECT DISTINCT race_name,date FROM races")
     result = myCursor.fetchall()
@@ -88,4 +87,6 @@ def mostWins():
   myCursor.execute(querry)
   mostWins = myCursor.fetchone() # - Since limit is 1 anyway no need to "fetch all"
   print("%s has won the most amount or faces with a total of %s" % (mostWins[0], mostWins[1]))
->>>>>>> master
+
+
+whoHasParticipatedMostRaces()
