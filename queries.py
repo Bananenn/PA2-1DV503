@@ -6,6 +6,8 @@ from ssl import match_hostname
 import mysql.connector
 from csv import reader
 
+from numpy import who
+
 # From slides
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
 myCursor = cnx.cursor()
@@ -15,10 +17,9 @@ def stringCleaner(string):
   clean = str(string).replace("('", "").replace("',)", "").replace("'", "").replace(")", "").replace('"', "").replace(",", "").replace("(", "")
   return clean
 
-
-def podiumPlacesForRace(mycursor):
+def podiumPlacesForRace():
   raceDetails = listRacesAndPick()
-  mycursor.execute("""
+  myCursor.execute("""
     SELECT participant.name, scoreboard.placing
     FROM gokart.participant  
     INNER JOIN gokart.scoreboard  
@@ -32,7 +33,7 @@ def podiumPlacesForRace(mycursor):
   print("—" * 29)  
   print("| {:20} | {:2} |".format("Name", "#"))
   print("—" * 29)
-  for (name, placing) in mycursor:
+  for (name, placing) in myCursor:
     print("| {:20} | {:2} |".format(name, placing))
   print("—" * 29)
 
@@ -42,24 +43,30 @@ def podiumPlacesForRace(mycursor):
 def whoHasParticipatedMostRaces():
   #TODO program things she has participated in 110 races counts 6 in both tables should only count in 1
   myCursor.execute("""SELECT
-  participant_id, participant.name,
-  COUNT(participant_id) AS numberOfRaces 
-
-  FROM
-  gokart.scoreboard, gokart.participant
-
-  GROUP BY 
-  scoreboard.participant_id
-
-  ORDER BY 
-  numberOfRaces DESC
-
-  LIMIT 1;""")
+    participant_id,
+    COUNT(participant_id) AS numberOfRaces
+    FROM
+    gokart.scoreboard
+    GROUP BY
+    scoreboard.participant_id
+    ORDER BY
+    numberOfRaces DESC
+    LIMIT 1""")
   
-  mostParticipation = myCursor.fetchone()
-  print("\n" + ("—") * 29)  
-  print("%s has participated in the most races a total of %s" % (mostParticipation[1], mostParticipation[2]))#for (name, numberOfRaces) in cursor:
-  print("—" * 29)
+  idAndAmmount = myCursor.fetchone()
+  
+  myCursor.execute("""SELECT 
+    participant.name
+    FROM
+    participant
+    WHERE
+    participant.id = %s;""" %idAndAmmount[0])
+
+  who = myCursor.fetchone()[0]
+
+  print("\n" + ("—") * 59)  
+  print("%s has participated in the most races a total of %d" % (who, idAndAmmount[1]))#for (name, numberOfRaces) in cursor:
+  print("—" * 59)
 
 def listRacesAndPick():
     myCursor.execute("SELECT DISTINCT race_name,date FROM races")
@@ -74,7 +81,7 @@ def listRacesAndPick():
     return result[int(selected)-1]
 
 def mostWins():
-  querry = """
+  myCursor.execute("""
   SELECT participant.name, COUNT(participant.name) AS numOfWins
   FROM gokart.participant  
   INNER JOIN gokart.scoreboard  
@@ -83,10 +90,8 @@ def mostWins():
   GROUP BY participant.name
   ORDER BY numOfWins DESC
   LIMIT 1;
-  """
-  myCursor.execute(querry)
+  """)
   mostWins = myCursor.fetchone() # - Since limit is 1 anyway no need to "fetch all"
-  print("%s has won the most amount or faces with a total of %s" % (mostWins[0], mostWins[1]))
-
-
-whoHasParticipatedMostRaces()
+  print("\n" + ("—") * 73) 
+  print("%s has won the most amount of races with a total of %s victories!" % (mostWins[0], mostWins[1]))
+  print("—" * 73)

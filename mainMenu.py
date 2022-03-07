@@ -1,3 +1,5 @@
+from queries import *
+
 while True:
     mainMenu = """
     1. Select a race and the names of the pole positions will be shown. (skriv bättre)
@@ -13,11 +15,11 @@ while True:
     selected = input("Please enter a menu number: ")
 
     if (selected == "1"):
-        print("Do 1")
+        podiumPlacesForRace()
     elif (selected == "2"):
-        print("Do 2")
+        whoHasParticipatedMostRaces()
     elif (selected == "3"):
-        print("Do 3")
+        mostWins()
     elif (selected == "4"):
         print("Do 4")
     elif (selected == "5"):
