@@ -1,4 +1,6 @@
 # You will need to use the Connector/Python
+from ast import match_case
+from ssl import match_hostname
 import mysql.connector
 from csv import reader
 
@@ -48,6 +50,7 @@ for file in ["carts", "races","participant","scoreboard"]:
                 addTableContent(file, header, next(scv_reader)) # next(scv_reader) will throw an excpetion
         except:
             print(" -- No more rowns --")
+
 
 
 # - temp
