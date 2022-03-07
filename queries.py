@@ -1,5 +1,6 @@
 # You will need to use the Connector/Python
 from ast import match_case
+import queue
 from ssl import match_hostname
 import mysql.connector
 from csv import reader
@@ -46,5 +47,17 @@ def listRacesAndPick():
     print("Selected race is " + str(result[int(selected)-1]))
     return result[int(selected)-1]
 
-#Example for whoWonRace()
-podiumPlacesForRace(myCursor)
+def mostWins():
+  querry = """
+  SELECT participant.name, COUNT(participant.name) AS numOfWins
+  FROM gokart.participant  
+  INNER JOIN gokart.scoreboard  
+  ON participant.id = scoreboard.participant_id
+  WHERE placing=1
+  GROUP BY participant.name
+  ORDER BY numOfWins DESC
+  LIMIT 1;
+  """
+  myCursor.execute(querry)
+  mostWins = myCursor.fetchone() # - Since limit is 1 anyway no need to "fetch all"
+  print("%s has won the most amount or faces with a total of %s" % (mostWins[0], mostWins[1]))
