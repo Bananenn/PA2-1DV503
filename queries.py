@@ -29,8 +29,31 @@ def podiumPlacesForRace(mycursor, race):
   print("| {:20} | {:2} |".format("Name", "#"))
   print("—" * 29)
   for (name, placing) in mycursor:
-    print("| {:20} | {:2} |".format(stringCleaner(name), stringCleaner(placing)))
+    print("| {:20} | {:2} |".format(name, placing))
   print("—" * 29)
 
 #Example for whoWonRace()
-podiumPlacesForRace(myCursor, "Helmet Hair 2021")
+# podiumPlacesForRace(myCursor, "Helmet Hair 2021")
+
+def whoHasParticipatedMostRaces(cursor):
+  cursor.execute("""SELECT
+  participant_id, participant.name,
+  COUNT(participant_id) AS numberOfRaces 
+
+  FROM
+  gokart.scoreboard, gokart.participant
+
+  GROUP BY 
+  scoreboard.participant_id
+
+  ORDER BY 
+  numberOfRaces DESC
+
+  LIMIT 1;""")
+  
+  mostParticipation = cursor.fetchone()
+  print("\n" + ("—") * 29)  
+  print("%s has participated in the most races a total of %s" % (mostParticipation[1], mostParticipation[2]))#for (name, numberOfRaces) in cursor:
+  print("—" * 29)
+
+whoHasParticipatedMostRaces(myCursor)
