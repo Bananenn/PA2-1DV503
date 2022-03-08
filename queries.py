@@ -6,8 +6,6 @@ from ssl import match_hostname
 import mysql.connector
 from csv import reader
 
-from numpy import who
-
 # From slides
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
 myCursor = cnx.cursor()
@@ -95,3 +93,14 @@ def mostWins():
   print("\n" + ("—") * 73) 
   print("%s has won the most amount of races with a total of %s victories!" % (mostWins[0], mostWins[1]))
   print("—" * 73)
+
+def avrageAgeOfWinner():
+  myCursor.execute("""
+  SELECT avg(age)
+  FROM goKart.participant
+  INNER JOIN goKart.scoreboard ON participant.id=scoreboard.participant_id AND placing = 1
+  """)
+  avrAge = myCursor.fetchone()[0] # - Since limit is 1 anyway no need to "fetch all"
+  print("\n" + ("—") * 30) 
+  print("The avrage are of the person winning a race is %s" % avrAge)
+  print("—" * 30)
