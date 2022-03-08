@@ -6,6 +6,8 @@ from ssl import match_hostname
 import winsound
 import mysql.connector
 from csv import reader
+from datetime import date
+
 
 # From slides
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
@@ -68,7 +70,7 @@ def whoHasParticipatedMostRaces():
   print("—" * 59)
 
 def listRacesAndPick():
-    myCursor.execute("SELECT DISTINCT race_name,date FROM races")
+    myCursor.execute("SELECT DISTINCT race_name,date FROM recorded_races")
     result = myCursor.fetchall()
     i = 0
     for race in result:
@@ -145,3 +147,10 @@ def engineSizeWinnerLooserHelmetHair():
       print("| {:93} |".format("The person that came in last place in Helmet Hair 2021 used a kart with " + each[1] + " cc engine size."))
   print(" " + ("—") * 96)
 
+def createView():
+  myCursor.execute(f"""
+  CREATE OR REPLACE VIEW recorded_races AS
+  SELECT *
+  FROM races
+  WHERE races.date <= '{str(date.today()).replace("-","")}'
+  """)

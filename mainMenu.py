@@ -1,5 +1,7 @@
 from queries import *
 
+createView()
+
 running = True
 while running:
     mainMenu = """
