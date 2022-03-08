@@ -1,6 +1,7 @@
 from queries import *
 
-while True:
+running = True
+while running:
     mainMenu = """
     1. Select a race and the names of the pole positions will be shown. (skriv bättre)
     2. Who has participated in the most amount of races.
@@ -25,6 +26,6 @@ while True:
     elif (selected == "5"):
         print("Do 5")
     elif (selected == "q"):
-        print("User want to quit")
+        running = False
     else:
         print("Input error")
