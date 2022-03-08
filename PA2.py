@@ -40,7 +40,7 @@ def addTableContent(tableName, header, valuales):
 # - For each file add table & fill it with the content from the files.   
 for file in ["carts", "races","participant","scoreboard"]:
     # - Open files and get relevant info
-    with open(("%s.csv" % file), 'r') as read_obj:
+    with open(("csvFiles/%s.csv" % file), 'r') as read_obj:
         scv_reader = reader(read_obj)
         header = next(scv_reader)
         CreateTable(header, file)
@@ -49,7 +49,7 @@ for file in ["carts", "races","participant","scoreboard"]:
             while True:
                 addTableContent(file, header, next(scv_reader)) # next(scv_reader) will throw an excpetion
         except:
-            print(" -- No more rowns --")
+            print(" -- No more rowns for file {:13} --".format(file))
 
 
 
