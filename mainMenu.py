@@ -8,6 +8,7 @@ while running:
     3. Who has won the most amount of competitions.
     4. Avrage age of the person winning a race
     5. The most common color of cart for placing 4th place.
+    6. Engine size of winner and looser in the race Helmet Hair 2021.
     q. to quit
     """
 
@@ -25,6 +26,8 @@ while running:
         avrageAgeOfWinner()
     elif (selected == "5"):
         kartColor4thPlace()
+    elif (selected == "6"):
+        engineSizeWinnerLooserHelmetHair()
     elif (selected == "q"):
         running = False
     else:

@@ -3,6 +3,7 @@ from ast import match_case
 import queue
 from sqlite3 import Cursor
 from ssl import match_hostname
+import winsound
 import mysql.connector
 from csv import reader
 
@@ -120,4 +121,27 @@ def kartColor4thPlace():
   print("\n" + ("—") * 80) 
   print("%s is the most common cart-color for all the fourth places with %d occurrences." % (str(color[0]).capitalize(), color[1]))
   print("—" * 80)
+
+def engineSizeWinnerLooserHelmetHair():
+  myCursor.execute("""
+  SELECT 
+    scoreboard.placing, carts.engine_size
+  FROM
+    gokart.scoreboard
+        LEFT JOIN
+    gokart.carts ON cart_id = carts.no
+  WHERE
+    (scoreboard.race = "Helmet Hair 2021" AND scoreboard.placing = 1) OR (scoreboard.race = "Helmet Hair 2021" AND scoreboard.placing = 8)
+  ORDER BY placing ASC
+  LIMIT 2
+  """)
+  winnerLoser = myCursor.fetchall()
+
+  print("\n " + ("—") * 96)
+  for each in winnerLoser:
+    if each[0] == "1":
+      print("| {:93} | ".format("The winner in Helmet Hair 2021 used a kart with " + each[1] + " cc engine size."))
+    elif each[0] == "8":
+      print("| {:93} |".format("The person that came in last place in Helmet Hair 2021 used a kart with " + each[1] + " cc engine size."))
+  print(" " + ("—") * 96)
 
