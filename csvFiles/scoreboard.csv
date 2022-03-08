@@ -1,65 +1,65 @@
 race,date,participant_id,placing,cart_id
-Mouse race,2020-06-20,19,2,5
-Mouse race,2020-06-20,10,6,4
-Mouse race,2020-06-20,11,1,3
-Mouse race,2020-06-20,21,4,10
-Mouse race,2020-06-20,12,7,2
-Mouse race,2020-06-20,1,5,8
-Mouse race,2020-06-20,15,3,9
-Mouse race,2020-06-20,23,8,1
-Zero to win,2020-08-27,6,4,5
-Zero to win,2020-08-27,17,2,1
-Zero to win,2020-08-27,11,3,7
-Zero to win,2020-08-27,23,7,6
-Zero to win,2020-08-27,5,8,4
-Zero to win,2020-08-27,18,5,2
-Zero to win,2020-08-27,9,6,3
-Zero to win,2020-08-27,10,1,9
-This is it,2022-10-27,20,6,4
-This is it,2022-10-27,18,1,6
-This is it,2022-10-27,22,4,8
-This is it,2022-10-27,13,5,5
-This is it,2022-10-27,19,7,10
-This is it,2022-10-27,23,3,9
-This is it,2022-10-27,17,2,1
-This is it,2022-10-27,6,8,2
-Red Devil,2020-09-17,12,8,8
-Red Devil,2020-09-17,24,2,4
-Red Devil,2020-09-17,2,3,2
-Red Devil,2020-09-17,22,5,10
-Red Devil,2020-09-17,4,7,5
-Red Devil,2020-09-17,15,1,8
-Red Devil,2020-09-17,16,6,1
-Red Devil,2020-09-17,11,4,6
-Leadfoot,2020-12-08,6,1,5
-Leadfoot,2020-12-08,23,2,9
-Leadfoot,2020-12-08,2,8,6
-Leadfoot,2020-12-08,24,3,3
-Leadfoot,2020-12-08,17,7,2
-Leadfoot,2020-12-08,10,4,7
-Leadfoot,2020-12-08,3,6,10
-Leadfoot,2020-12-08,11,5,4
-Prototype,2021-01-06,19,7,3
-Prototype,2021-01-06,9,1,5
-Prototype,2021-01-06,15,6,1
-Prototype,2021-01-06,1,3,2
-Prototype,2021-01-06,24,5,6
-Prototype,2021-01-06,4,8,7
-Prototype,2021-01-06,21,2,4
-Prototype,2021-01-06,2,4,9
-Cannonball,2021-01-26,20,5,5
-Cannonball,2021-01-26,7,7,8
-Cannonball,2021-01-26,1,1,6
-Cannonball,2021-01-26,21,8,10
-Cannonball,2021-01-26,22,6,4
-Cannonball,2021-01-26,9,3,7
-Cannonball,2021-01-26,14,4,3
-Cannonball,2021-01-26,17,2,2
-Helmet Hair 2021,2021-03-08,9,2,4
-Helmet Hair 2021,2021-03-08,1,3,6
-Helmet Hair 2021,2021-03-08,10,4,7
-Helmet Hair 2021,2021-03-08,16,8,9
-Helmet Hair 2021,2021-03-08,22,7,1
-Helmet Hair 2021,2021-03-08,5,5,2
-Helmet Hair 2021,2021-03-08,19,6,10
-Helmet Hair 2021,2021-03-08,18,1,8
+Mouse race,20200620,19,2,5
+Mouse race,20200620,10,6,4
+Mouse race,20200620,11,1,3
+Mouse race,20200620,21,4,10
+Mouse race,20200620,12,7,2
+Mouse race,20200620,1,5,8
+Mouse race,20200620,15,3,9
+Mouse race,20200620,23,8,1
+Zero to win,20200827,6,4,5
+Zero to win,20200827,17,2,1
+Zero to win,20200827,11,3,7
+Zero to win,20200827,23,7,6
+Zero to win,20200827,5,8,4
+Zero to win,20200827,18,5,2
+Zero to win,20200827,9,6,3
+Zero to win,20200827,10,1,9
+This is it,20211027,20,6,4
+This is it,20211027,18,1,6
+This is it,20211027,22,4,8
+This is it,20211027,13,5,5
+This is it,20211027,19,7,10
+This is it,20211027,23,3,9
+This is it,20211027,17,2,1
+This is it,20211027,6,8,2
+Red Devil,20200917,12,8,8
+Red Devil,20200917,24,2,4
+Red Devil,20200917,2,3,2
+Red Devil,20200917,22,5,10
+Red Devil,20200917,4,7,5
+Red Devil,20200917,15,1,8
+Red Devil,20200917,16,6,1
+Red Devil,20200917,11,4,6
+Leadfoot,20201208,6,1,5
+Leadfoot,20201208,23,2,9
+Leadfoot,20201208,2,8,6
+Leadfoot,20201208,24,3,3
+Leadfoot,20201208,17,7,2
+Leadfoot,20201208,10,4,7
+Leadfoot,20201208,3,6,10
+Leadfoot,20201208,11,5,4
+Prototype,20210106,19,7,3
+Prototype,20210106,9,1,5
+Prototype,20210106,15,6,1
+Prototype,20210106,1,3,2
+Prototype,20210106,24,5,6
+Prototype,20210106,4,8,7
+Prototype,20210106,21,2,4
+Prototype,20210106,2,4,9
+Cannonball,20210126,20,5,5
+Cannonball,20210126,7,7,8
+Cannonball,20210126,1,1,6
+Cannonball,20210126,21,8,10
+Cannonball,20210126,22,6,4
+Cannonball,20210126,9,3,7
+Cannonball,20210126,14,4,3
+Cannonball,20210126,17,2,2
+Helmet Hair 2021,20210308,9,2,4
+Helmet Hair 2021,20210308,1,3,6
+Helmet Hair 2021,20210308,10,4,7
+Helmet Hair 2021,20210308,16,8,9
+Helmet Hair 2021,20210308,22,7,1
+Helmet Hair 2021,20210308,5,5,2
+Helmet Hair 2021,20210308,19,6,10
+Helmet Hair 2021,20210308,18,1,8
