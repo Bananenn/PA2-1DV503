@@ -104,3 +104,20 @@ def avrageAgeOfWinner():
   print("\n" + ("—") * 30) 
   print("The avrage are of the person winning a race is %s" % avrAge)
   print("—" * 30)
+
+def kartColor4thPlace():
+  myCursor.execute("""
+  SELECT carts.color AS cart_color,
+  COUNT(cart_id) AS cart_count
+  FROM gokart.scoreboard
+  LEFT JOIN gokart.carts ON cart_id = carts.no
+  WHERE scoreboard.placing = 4
+  GROUP BY carts.color
+  ORDER BY cart_count DESC
+  LIMIT 1
+  """)
+  color = myCursor.fetchone()
+  print("\n" + ("—") * 80) 
+  print("%s is the most common cart-color for all the fourth places with %d occurrences." % (str(color[0]).capitalize(), color[1]))
+  print("—" * 80)
+

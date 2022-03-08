@@ -7,7 +7,7 @@ while running:
     2. Who has participated in the most amount of races.
     3. Who has won the most amount of competitions.
     4. Avrage age of the person winning a race
-    5. ...
+    5. The most common color of cart for placing 4th place.
     q. to quit
     """
 
@@ -24,7 +24,7 @@ while running:
     elif (selected == "4"):
         avrageAgeOfWinner()
     elif (selected == "5"):
-        print("Do 5")
+        kartColor4thPlace()
     elif (selected == "q"):
         running = False
     else:
