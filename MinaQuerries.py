@@ -33,5 +33,12 @@ ORDER BY numOfWins DESC
 LIMIT 1;
 """
 
+#Q: What is the most common color of cart for placing total 7-8 place?
+"""
 
+"""
 
+#Q: What engine size did the winner and looser have of the race Cannonball 2021
+"""
+
+"""
