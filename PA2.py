@@ -1,6 +1,8 @@
-# You will need to use the Connector/Python
-from ast import match_case
-from ssl import match_hostname
+# Programming assignment 2 - Database Technology, 1DV503
+#
+# Created by André Franzén, af223kr & Daniel Mogensen, djovy08
+# March 2022
+#
 import mysql.connector
 from csv import reader
 from mainMenu import *
@@ -15,16 +17,15 @@ myCursor = cnx.cursor()
 myCursor.execute("CREATE DATABASE IF NOT EXISTS GoKart")
 myCursor.execute("USE GoKart")
 
-
 def CreateTable(header, tableName):
     colums = ""
     for name in header:
         colums += ("%s varchar(255)," % name)
 
-    colums = colums[:-1] # - Remove the last ,
+    colums = colums[:-1] # - Remove the last ','
 
     sqlQuerry = ("""
-    CREATE TABLE %s (%s);
+    CREATE TABLE IF NOT EXISTS %s (%s);
     """) % (tableName,colums)
     myCursor.execute(sqlQuerry)
 

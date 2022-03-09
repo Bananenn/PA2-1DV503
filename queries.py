@@ -1,18 +1,15 @@
-# You will need to use the Connector/Python
-from ast import match_case
-import queue
-from sqlite3 import Cursor
-from ssl import match_hostname
-import winsound
+# Programming assignment 2 - Database Technology, 1DV503
+#
+# Created by André Franzén, af223kr & Daniel Mogensen, djovy08
+# March 2022
+#
 import mysql.connector
 from csv import reader
 from datetime import date
 
-
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
 myCursor = cnx.cursor()
 myCursor.execute("USE GoKart")
-
 
 def stringCleaner(string):
   clean = str(string).replace("('", "").replace("',)", "").replace("'", "").replace(")", "").replace('"', "").replace(",", "").replace("(", "")
@@ -42,7 +39,6 @@ def podiumPlacesForRace():
 # podiumPlacesForRace(myCursor, "Helmet Hair 2021")
 
 def whoHasParticipatedMostRaces():
-  #TODO program things she has participated in 110 races counts 6 in both tables should only count in 1
   myCursor.execute("""SELECT
     participant_id,
     COUNT(participant_id) AS numberOfRaces
@@ -65,9 +61,9 @@ def whoHasParticipatedMostRaces():
 
   who = myCursor.fetchone()[0]
 
-  print("\n" + ("—") * 59)  
-  print("%s has participated in the most races a total of %d" % (who, idAndAmmount[1]))#for (name, numberOfRaces) in cursor:
-  print("—" * 59)
+  print("\n" + ("—") * 63)  
+  print("%s has participated in the most races a total of %d" % (who, idAndAmmount[1]))
+  print("—" * 63)
 
 def listRacesAndPick():
     myCursor.execute("SELECT DISTINCT race_name,date FROM recorded_races") # Using our created view "recorded_races" to mask out the races in the future.
@@ -148,8 +144,7 @@ def engineSizeWinnerLooserHelmetHair():
       print("| {:93} |".format("The person that came in last place in Helmet Hair 2021 used a kart with " + each[1] + " cc engine size."))
   
   if sizeDoesNotMatter:
-    print("| {:93} |".format("Here we can see that size DOES NOT matter."))
-
+    print("| {:93} |".format("Here we can see that size does NOT matter."))
   print(" " + ("—") * 96)
 
 def createView():

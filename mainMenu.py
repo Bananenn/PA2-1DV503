@@ -1,3 +1,8 @@
+# Programming assignment 2 - Database Technology, 1DV503
+#
+# Created by André Franzén, af223kr & Daniel Mogensen, djovy08
+# March 2022
+#
 from queries import *
 
 def mainMenu():
@@ -8,15 +13,14 @@ def mainMenu():
 
   while running:
       mainMenu = """
-      1. Select a race and the names of the pole positions will be shown. (skriv bättre)
-      2. Who has participated in the most amount of races.
-      3. Who has won the most amount of competitions.
-      4. Avrage age of the person winning a race
-      5. The most common color of cart for placing 4th place.
-      6. Engine size of winner and looser in the race Helmet Hair 2021.
+      1. Select a race and the top three racers will be shown.
+      2. Show who has participated in the most amount of races.
+      3. Show who has won the most amount of competitions.
+      4. Show the average age of the person winning a race.
+      5. Show the most common color of cart for placing 4th place in races.
+      6. Show the engine size of the winner and the looser in the race Helmet Hair 2021.
       q. to quit
       """
-
       print(mainMenu)
 
       selected = input("Please enter a number to navigate the menu: ")
@@ -33,9 +37,8 @@ def mainMenu():
           kartColor4thPlace()
       elif (selected == "6"):
           engineSizeWinnerLooserHelmetHair()
-      elif (selected == ("q" or "Q")):
+      elif (selected == "q"):
           running = False
+          SystemExit
       else:
           print("Wrong input. Try again.")
-
-mainMenu()
