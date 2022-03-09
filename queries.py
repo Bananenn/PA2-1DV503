@@ -9,10 +9,10 @@ from csv import reader
 from datetime import date
 
 
-# From slides
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
 myCursor = cnx.cursor()
 myCursor.execute("USE GoKart")
+
 
 def stringCleaner(string):
   clean = str(string).replace("('", "").replace("',)", "").replace("'", "").replace(")", "").replace('"', "").replace(",", "").replace("(", "")
@@ -70,12 +70,12 @@ def whoHasParticipatedMostRaces():
   print("—" * 59)
 
 def listRacesAndPick():
-    myCursor.execute("SELECT DISTINCT race_name,date FROM recorded_races")
+    myCursor.execute("SELECT DISTINCT race_name,date FROM recorded_races") # Using our created view "recorded_races" to mask out the races in the future.
     result = myCursor.fetchall()
     i = 0
     for race in result:
         i += 1
-        print("%d. %s %s " % (i,race[0],race[1]))
+        print("{:2}. Race name: {:18} Date: {}".format(i,race[0],race[1]))
 
     selected = input("Select a race: ")
     print("Selected race is " + str(result[int(selected)-1]))
@@ -105,7 +105,7 @@ def avrageAgeOfWinner():
   """)
   avrAge = myCursor.fetchone()[0] # - Since limit is 1 anyway no need to "fetch all"
   print("\n" + ("—") * 30) 
-  print("The avrage are of the person winning a race is %s" % avrAge)
+  print("The average age of the person winning a race is %s years old." % avrAge)
   print("—" * 30)
 
 def kartColor4thPlace():
@@ -142,9 +142,14 @@ def engineSizeWinnerLooserHelmetHair():
   print("\n " + ("—") * 96)
   for each in winnerLoser:
     if each[0] == "1":
+      sizeDoesNotMatter = True
       print("| {:93} | ".format("The winner in Helmet Hair 2021 used a kart with " + each[1] + " cc engine size."))
     elif each[0] == "8":
       print("| {:93} |".format("The person that came in last place in Helmet Hair 2021 used a kart with " + each[1] + " cc engine size."))
+  
+  if sizeDoesNotMatter:
+    print("| {:93} |".format("Here we can see that size DOES NOT matter."))
+
   print(" " + ("—") * 96)
 
 def createView():

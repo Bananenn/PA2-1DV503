@@ -3,6 +3,7 @@ from ast import match_case
 from ssl import match_hostname
 import mysql.connector
 from csv import reader
+from mainMenu import *
 
 # From slides
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
@@ -10,7 +11,7 @@ myCursor = cnx.cursor()
 
 # Your code should check if the database with your last name exists
 # If the database does not exist, it should be created
-myCursor.execute("DROP DATABASE GoKart")
+
 myCursor.execute("CREATE DATABASE IF NOT EXISTS GoKart")
 myCursor.execute("USE GoKart")
 
@@ -51,7 +52,4 @@ for file in ["carts", "races","participant","scoreboard"]:
         except:
             print(" -- No more rowns for file {:13} --".format(file))
 
-
-
-# - temp
-
+mainMenu()
