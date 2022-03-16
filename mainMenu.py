@@ -42,3 +42,5 @@ def mainMenu():
           SystemExit
       else:
           print("Wrong input. Try again.")
+
+mainMenu()

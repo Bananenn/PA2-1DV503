@@ -5,7 +5,6 @@
 #
 import mysql.connector
 from csv import reader
-from mainMenu import *
 
 # From slides
 cnx = mysql.connector.connect(user='root', password='root',host='127.0.0.1')
@@ -53,4 +52,4 @@ for file in ["carts", "races","participant","scoreboard"]:
         except:
             print(" -- No more rowns for file {:13} --".format(file))
 
-mainMenu()
+#mainMenu()
